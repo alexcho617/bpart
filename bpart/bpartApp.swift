@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Firebase
 @main
 struct bpartApp: App {
     var body: some Scene {
