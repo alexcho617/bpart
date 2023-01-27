@@ -15,7 +15,12 @@ extension Font {
     static let customtitle5 = Font.custom("PretendardVariable", size: 13).weight(.medium)
     static let custombody2 = Font.custom("PretendardVariable", size: 13).weight(.medium)
     static let custombody3 = Font.custom("PretendardVariable", size: 8).weight(.medium)
+
+    static let customhead4 = Font.custom("PretendardVariable", size: 12).weight(.medium)
     
+    
+    
+    static let menuTitle = Font.custom("PretendardVariable", size: 10)
     
     static let bargraphTitle = Font.custom("PretendardVariable", size: 11).weight(.bold)
     static let bargraphLarge = Font.custom("PretendardVariable", size: 13).weight(.medium)
