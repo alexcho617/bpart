@@ -19,9 +19,9 @@ struct HomeView: View {
             List(firestoreFundingManager.fundings, id: \.self){ funding in
                
                 HStack{
-                    Text("\(funding.title)")
-                    Text("\(funding.currentAmount)")
-                    Text("\(funding.targetAmount)")
+                    Text("\(funding.title)").font(.customtitle1)
+                    Text("\(funding.currentAmount)").font(.customtitle2)
+                    Text("\(funding.targetAmount)").font(.customtitle3)
                 }.onTapGesture {
                     //navigate to detail
                 }
