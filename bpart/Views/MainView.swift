@@ -11,10 +11,10 @@ struct MainView: View {
     @State var pageState : String = "RegisterView"
 
     var body: some View {
+
         
         
-//                if pageState == "RegisterView" {
-                if pageState == "r" {
+                if pageState == "RegisterView" {
                     RegisterView(pageState : self.$pageState)
                 } else if pageState == "OnboardingView" {
                     OnboardingView(pageState : self.$pageState)
