@@ -12,7 +12,6 @@ struct HomeView: View {
     //    @State private var showPopUp = false
     
     @State var funding = Funding(title: "가나 교육사업 프로젝트", description: "\"저희 동네에도 학교가 지어졌지만,\n선생님이 안계셔서 공부를 할 수 없어요\"",currentAmount: 74, targetAmount: 100, id: "1111", media: "sample", milestones: [Milestone(what: "학교건설", who: "현대건설",isDone: true),Milestone(what: "기기지원", who: "Samsung",isDone: false),],participationCount: 262)
-    var icons = [Icons]
     
     init(){
     }
@@ -42,7 +41,21 @@ struct HomeView: View {
                     Spacer()
                     
                     HStack{
-                        
+                        VStack{
+                            Button {
+                                //
+                            } label: {
+                                VStack{
+                                    Image(systemName:"star")
+                                    Text("전체")
+                                }
+                                VStack{
+                                    Image(systemName:"wonsign.circle")
+                                    Text("교육")
+                                }
+                            }
+
+                        }
                     }
                     //list of CARDS
                     
