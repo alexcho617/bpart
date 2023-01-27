@@ -36,11 +36,15 @@ struct RegisterView: View {
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
                     
-                    Image("sample")
-                        .resizable()
-                        .frame(width: 60)
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
+                    Button(action : {
+                        //OnboardingView()
+                    }){
+                        Image("sample")
+                            .resizable()
+                            .frame(width: 60)
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                    }
                 }
             }.frame(height: 80)
         }
