@@ -19,14 +19,14 @@ struct HomeView: View {
     let frameheight : CGFloat = 277
     
     
-//    @State var fundings: [String] = Funding.edu()
+    //    @State var fundings: [String] = Funding.edu()
     
     init(){
         //calling firebase
     }
     
     var body: some View {
-//        NavigationStack {
+//        VStack {
             ScrollView {
                 Spacer().frame(height: 1)
                 VStack(alignment: .leading){
@@ -71,11 +71,11 @@ struct HomeView: View {
                             }
                         }
                     }.frame(width: framewidth)
-//                    }.frame(width: framewidth)
+                    //                    }.frame(width: framewidth)
                     
                 }
                 switch selectedMenuIndex{
-                //suggestive case
+                    //suggestive case
                 case 0:
                     VStack{
                         NavigationLink(destination: FundingDetailView()) {

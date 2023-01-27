@@ -32,7 +32,7 @@ struct ContentView: View {
         } else if pageState == "OnboardingPagerView" {
             OnboardingStartView(pageState: self.$pageState)
         } else {
-            HomeView()
+            MainView()
         }
     }
 }
