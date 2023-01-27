@@ -9,8 +9,13 @@ import Foundation
 import SwiftUI
 extension Font {
 
-    static let customtitle1 = Font.custom("PretendardVariable", size: 18).bold()
-    static let customtitle2 = Font.custom("PretendardVariable", size: 12).bold()
-    static let customtitle3 = Font.custom("PretendardVariable", size: 8).bold()
+    static let heading1 = Font.custom("PretendardVariable", size: 22).weight(.semibold)
+    static let title3 = Font.custom("PretendardVariable", size: 21.5).weight(.medium)
+    static let body2 = Font.custom("PretendardVariable", size: 13).weight(.medium)
+    
+    
+    
+    static let bargraphDescription = Font.custom("PretendardVariable", size: 11)
+
 
 }

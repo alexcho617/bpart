@@ -9,64 +9,84 @@ import SwiftUI
 import Firebase
 
 struct HomeView: View {
-//    @EnvironmentObject var firestoreFundingManager: FirestoreFundingManager
-//    @State private var showPopUp = false
+    //    @EnvironmentObject var firestoreFundingManager: FirestoreFundingManager
+    //    @State private var showPopUp = false
     init(){
     }
+    let steps = [0, 5, 10]
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading){
-                    HStack{
-                        Text("LOGO").font(.customtitle1)
-                        Spacer()
-                        Image(systemName: "person")
-                    }
+                    Image("logo").resizable().frame(width: 60, height: 19.23)
                     Spacer()
-                    Text("비파트님,\n당신의 따듯한 후원 덕분에\n오늘 3개의 학교가 세워졌어요.").font(.custom("PretendardVariable", size: 20)).fontWeight(.bold)
+                    Text("비파트님,\n당신의 따듯한 후원 덕분에\n오늘 3개의 학교가 세워졌어요.").font(.heading1)
+                    
+                    Spacer()
+                    
                     HStack{
                         //ICONS
                     }
                     //list of CARDS
-                    ZStack{
-                        Image("sample")
-                        RoundedRectangle(cornerRadius: 12)
-                            .frame(width: 350,height: 310)
-                            .foregroundColor(.black.opacity(0.05))
+                    VStack(alignment: .leading){
+                        
+                        ImageGraph()
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("가나 교육사업 프로젝트").font(.title3)
+                                
+                                Text("\"저희 동네에도 학교가 지어졌지만,\n선생님이 안계셔서 공부를 할 수 없어요\"").font(.body2)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                            VStack{
+                                Button {
+                                    //heart"
+                                } label: {
+                                    Image(systemName: "heart").foregroundColor(.buttonColor)
+                                }
+                                Spacer()
+                                Button {
+                                    //participate
+                                } label: {
+                                    Text("함께하기").foregroundColor(.buttonColor)
+                                
+                                }
+                            }
+                        }
                     }
-                    
-                }.padding()
-            }
+                }
                 
+            }.padding()
         }
-//        NavigationView {
-//            List(firestoreFundingManager.fundings, id: \.self){ funding in
-//
-//                HStack{
-//                    Text("\(funding.title)").font(.customtitle1)
-//                    Text("\(funding.currentAmount)").font(.customtitle2)
-//                    Text("\(funding.targetAmount)").font(.customtitle3)
-//                }.onTapGesture {
-//                    //navigate to detail
-//                }
-//
-//            }.navigationTitle("Fundings")
-//                .navigationBarItems(trailing: Button(action: {
-//                    //add dogs
-////                    showPopUp.toggle()
-//                }, label: {
-////                    Image(systemName: "plus")
-//                }))
-////                .sheet(isPresented: $showPopUp) {
-////                    //pop up
-////                }
-//        }
+        
     }
+  
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView().environmentObject((FirestoreFundingManager()))
+    }
+}
+
+struct ImageGraph: View {
+    var body: some View {
+        let participationNumber: Int = 262
+        ZStack(alignment: .bottomLeading){
+            Image("sample").resizable()
+                .frame(width: 348, height: 178)
+                .cornerRadius(8)
+            HStack{
+                Text("GRAPH")
+                Spacer()
+                Text("\(participationNumber)명이\n후원에 동참했어요")
+                    .foregroundColor(.white)
+                    .font(.title3)
+                    .padding(12)
+            }
+        }
+        
     }
 }
