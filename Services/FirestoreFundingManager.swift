@@ -12,7 +12,7 @@ class FirestoreFundingManager: ObservableObject {
     @Published var fundings: [Funding] = []
     
     init(){
-        fetchFunding()
+//        fetchFunding()
     }
     func fetchFunding(){
         fundings.removeAll()
@@ -35,8 +35,8 @@ class FirestoreFundingManager: ObservableObject {
                     let id = data["id"] as? String ?? ""
                     let media = data["media"] as? String ?? ""
                     print(data)
-                    let funding = Funding(title: title, currentAmount: currentAmount, targetAmount: targetAmount, id: id,media: media)
-                    self.fundings.append(funding)
+//                    let funding = Funding(title: title, currentAmount: currentAmount, targetAmount: targetAmount, id: id,media: media)
+//                    self.fundings.append(funding)
                     
                     
                 }
