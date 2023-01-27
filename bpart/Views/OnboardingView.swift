@@ -8,6 +8,7 @@
 import SwiftUI
 struct OnboardingView: View {
     
+    @Binding var pageState : String
     
     @State private var allConsentListselected = false
     let allConsent = "약관 전체 동의"
@@ -22,18 +23,27 @@ struct OnboardingView: View {
         "(선택) 마케팅 정보 수신정보",
     ]
     
-    init(){
-    }
-    
     var body: some View {
         consent
     }
     
     var consent: some View {
         
-        return NavigationView {
+        return NavigationStack {
             VStack(alignment:.leading) {
-                
+                Button(action: {
+                    pageState = "RegisterView"
+                }, label: {
+                    
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 15)
+                        .padding(20)
+                })
+                Text("서비스 이용 동의")
+                    .font(.customheading1)
+                    .padding(EdgeInsets(top: 30, leading: 35, bottom: 20, trailing: 0))
                 HStack{
                     Button(action: {
                         allConsentListselected = !allConsentListselected
@@ -46,13 +56,18 @@ struct OnboardingView: View {
                         }
                     }, label: {
                         allConsentListselected ?
-                        Image(systemName: "circle.fill") :
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20) :
                         Image(systemName: "circle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
                     })
                     
                     Text(allConsent)
+                        .font(.customheading1)
                     
-                }.padding(EdgeInsets(top: 30, leading: 35, bottom: 20, trailing: 0))
+                }.padding(EdgeInsets(top: 30, leading: 15, bottom: 20, trailing: 0))
                 
                 // line
                 Rectangle()
@@ -63,14 +78,17 @@ struct OnboardingView: View {
                 VStack{
                     VStack{
                         ForEach(0..<consentListSelected.count){ idx in
-                            
                             HStack{
                                 Button(action: {
                                     consentListSelected[idx] = !consentListSelected[idx]
                                 }, label: {
                                     consentListSelected[idx] ?
-                                    Image(systemName: "circle.fill") :
+                                    Image(systemName: "circle.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 20):
                                     Image(systemName: "circle")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
                                 })
                                 
                                 Text(consentList[idx])
@@ -81,42 +99,65 @@ struct OnboardingView: View {
                         }
                     }
                     Spacer()
-                    
-                    NavigationLink(destination: InputName()) {
+                    VStack{
                         Text("확인")
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .padding()
-                    }.padding(EdgeInsets(top: 8, leading: 140, bottom: 8, trailing: 140))
-                        .foregroundColor(Color.white)
-                        .background(Color(red: 46/255, green: 204/255, blue: 113/255))
-                        .cornerRadius(10)
-                }.padding(20)
+                            .frame(width: 350, height : 60)
+                            .foregroundColor(areChecked() ? .white: .gray)
+                            .font(.customtitle2)
+                            .cornerRadius(10)
+                            .background(areChecked() ? Color(red: 62/255, green: 185/255, blue: 255/255) : Color.white)
+                            .onTapGesture{
+                                if(areChecked()){
+                                    self.pageState = "InputNameView"
+                                }
+                            }
+//                        : Text("확인")
+//                            .frame(width: 350, height : 60)
+//                            .foregroundColor(.gray)
+//                            .font(.customtitle2)
+//                            .background(Color.white)
+//                            .border(.gray)
+//                            .cornerRadius(10);
+                    }.padding(20)
+                }
             }
-            .navigationBarTitle("서비스 이용 동의")
         }
     }
-}
-
-struct InputName : View{
-    @State var userName: String = ""
     
-    var body: some View {
-        VStack {
-            Text("BPart에서 사용할 이름을 입력해주세요.")
-            
-            TextField("이름을 임력해주세요", text: $userName ){
-                
-            }
-        }
+    func areChecked() -> Bool {
+        return (consentListSelected[1] && consentListSelected[2])
     }
+    //    func ConfirmButton() -> View {
+    //        if(consentListSelected[1] && consentListSelected[2]) {
+    //            return NavigationLink (
+    //                destination: InputName()
+    //                , label : {
+    //                    Text("확인")
+    //                        .frame(width: 350, height : 60)
+    //                        .foregroundColor(.white)
+    //                        .font(.customtitle2)
+    //                        .cornerRadius(10)
+    //                        .background(Color(red: 62/255, green: 185/255, blue: 255/255))
+    //                    }
+    //                )
+    //            } else {
+    //                return Text("확인")
+    //                    .frame(width: 350, height : 60)
+    //                    .foregroundColor(.gray)
+    //                    .font(.customtitle2)
+    //                    .background(Color.white)
+    //                    .border(.gray)
+    //                    .cornerRadius(10);
+    //            }
+    //        }
+    //    }
 }
 
 
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView()
+        OnboardingView(pageState: .constant("OnboardingView"))
     }
 }
 

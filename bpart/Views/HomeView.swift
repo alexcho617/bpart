@@ -17,7 +17,7 @@ struct HomeView: View {
     }
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading){
                     Image("logo").resizable().frame(width: 60, height: 19.23)
@@ -100,7 +100,7 @@ struct HomeView: View {
             }.padding()
         }
         
-    }
+//    }
     
 }
 

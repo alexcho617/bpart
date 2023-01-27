@@ -8,45 +8,64 @@
 import SwiftUI
 
 struct RegisterView: View {
+    
+    @Binding var pageState : String
+    
     var body: some View {
         VStack{
             VStack(alignment: .leading){
                 Spacer()
-                Image("sample") // logo
+                Image("logo") // logo
                     .resizable()
-                    .frame(width: 180, height: 100)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 180)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 10))
+                    .offset(x: -40)
                 Text("진정한 도움을 위한 부분들을 함께 완성해주세요.")
-                    .font(.custom("PretendardVariable", size: 20)).fontWeight(.bold)
+                    .font(.customheading1)
+                    .offset(x: -40)
                 Spacer()
             }
             
             VStack(alignment: .center){
                 Text("SNS 계정으로 간편 가입하기")
+                    .foregroundColor(.gray)
+                    .font(.customtitle5)
                 
-                HStack{
-                    Image("sample")
+                
+                HStack(){
+                    Spacer()
+                    Image("kakao_logo")
                         .resizable()
-                        .frame(width: 60)
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
+                        .frame(width: 60, height: 60)
                     
-                    Image("sample")
+                    Spacer()
+                    
+                    Image("naver_logo")
                         .resizable()
-                        .frame(width: 60)
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
+                        .frame(width: 60, height: 60)
                     
-                    Button(action : {
-                        //OnboardingView()
-                    }){
-                        Image("sample")
-                            .resizable()
-                            .frame(width: 60)
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Circle())
-                    }
-                }
-            }.frame(height: 80)
+                    Spacer()
+                    
+                    Image("google_logo")
+                           .resizable()
+                           .frame(width: 60, height: 60)
+                           .onTapGesture{
+                               self.pageState = "OnboardingView"
+                           }
+                    
+//                    NavigationLink(destination: OnboardingView()) {
+//                        Text("GO")
+//                        Image("google_logo")
+//                            .resizable()
+//                            .frame(width: 60, height: 60)
+//                    }
+                    
+                    Spacer()
+                    
+                }.padding(20)
+            }.frame(height: 150)
+                
         }
     }
 }
@@ -54,6 +73,6 @@ struct RegisterView: View {
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        RegisterView(pageState:.constant("RegisterView"))
     }
 }
