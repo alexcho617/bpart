@@ -29,6 +29,7 @@
 		578C2355298343DE0052F518 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 578C2354298343DE0052F518 /* FirebaseFirestore */; };
 		578C2357298343DE0052F518 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 578C2356298343DE0052F518 /* FirebaseFunctions */; };
 		578C2359298343DE0052F518 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 578C2358298343DE0052F518 /* FirebaseStorage */; };
+		57A96C3429839DE3000FBEFE /* FundingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A96C3329839DE3000FBEFE /* FundingResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		578C23402983432C0052F518 /* bpartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bpartUITests.swift; sourceTree = "<group>"; };
 		578C23422983432C0052F518 /* bpartUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bpartUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		578C234F298343710052F518 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		57A96C3329839DE3000FBEFE /* FundingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				57713CE62983563600F4C288 /* MainView.swift */,
 				57713CCD298346BA00F4C288 /* HomeView.swift */,
+				57A96C3329839DE3000FBEFE /* FundingResult.swift */,
 				57713CE22983548900F4C288 /* MyPageView.swift */,
 				57713CE42983549300F4C288 /* FundingMapView.swift */,
 				57713CD6298347EA00F4C288 /* FundingDetailView.swift */,
@@ -351,6 +354,7 @@
 				57713CE52983549300F4C288 /* FundingMapView.swift in Sources */,
 				57713CE929838A4500F4C288 /* Color+Extension.swift in Sources */,
 				57713CE12983506900F4C288 /* Font+Extension.swift in Sources */,
+				57A96C3429839DE3000FBEFE /* FundingResult.swift in Sources */,
 				57713CCC2983469500F4C288 /* Funding.swift in Sources */,
 				578C23262983432A0052F518 /* bpartApp.swift in Sources */,
 				57713CD7298347EA00F4C288 /* FundingDetailView.swift in Sources */,
