@@ -26,12 +26,13 @@ struct HomeView: View {
     }
     
     var body: some View {
-//        VStack {
+
+        NavigationView{
             ScrollView {
                 Spacer().frame(height: 1)
-                VStack(alignment: .leading){
+                    .padding(.top, 1)
+                VStack(alignment: .leading) {
                     Image("logo").resizable().frame(width: 60, height: 19.23).padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
-                    
                     Spacer()
                         .frame(height:20.77)
                     Text("비파트님,").font(.customheading1)
@@ -41,10 +42,14 @@ struct HomeView: View {
                         .frame(height:13)
                     Text("오늘 3개의 학교가 세워졌어요.").font(.customheading1)
                     Spacer().frame(height:20.77)
+                        .frame(width: framewidth)
+                }
+                VStack(alignment: .leading){
                     NavigationLink {
-                        FundingResult().toolbar(.hidden, for: .tabBar)
+                        FundingResult()
                     } label: {
                         Text("2023 후원 현황 확인하기")
+                        
                             .font(.customhead4)
                             .foregroundColor(.teal)
                             .padding(EdgeInsets(top: 2, leading: 16, bottom: 2, trailing: 16))
@@ -52,6 +57,8 @@ struct HomeView: View {
                                 RoundedRectangle(cornerRadius: 30)
                                     .stroke(Color.teal, lineWidth: 1)
                             ).padding(4)
+                        
+                        
                     }
                     Spacer().frame(height:16)
                     HStack{
@@ -70,93 +77,106 @@ struct HomeView: View {
                                 .padding(EdgeInsets(top: 0, leading: 7, bottom: 0, trailing: 7))
                             }
                         }
-                    }.frame(width: framewidth)
-                    //                    }.frame(width: framewidth)
+
+                    }
+                    
                     
                 }
-                switch selectedMenuIndex{
-                    //suggestive case
-                case 0:
-                    VStack{
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("edu1").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
+                Group{
+                    switch selectedMenuIndex{
+                        //suggestive case
+                    case 0:
+                        Group{
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("edu1").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("edu3").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("econ1").resizable().frame(width: framewidth, height: frameheight)
+                            }
                         }
                         
+                        
+                        
+                    case 1:
                         NavigationLink(destination: FundingDetailView()) {
-                            Image("edu3").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
+                            Image("edu1").resizable().frame(width: framewidth, height: frameheight)
+                        }
+                        NavigationLink(destination: FundingDetailView()) {
+                            Image("edu2").resizable().frame(width: framewidth, height: frameheight)
+                        }
+                        NavigationLink(destination: FundingDetailView()) {
+                            Image("edu3").resizable().frame(width: framewidth, height: frameheight)
                         }
                         
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("econ1").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
+                    case 2:
+                        
+                        Group{
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("water1").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("water2").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("water3").resizable().frame(width: framewidth, height: frameheight)
+                            }
                         }
                         
-                    }
-                case 1:
-                    VStack{
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("edu1").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
+                        
+                    case 3:
+                        Group{
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("food1").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("food2").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("food3").resizable().frame(width: framewidth, height: frameheight)
+                            }
                         }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("edu2").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
+                        
+                        
+                    case 4:
+                        VStack{
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("right1").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("right2").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("right3").resizable().frame(width: framewidth, height: frameheight)
+                            }
                         }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("edu3").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
+                    case 5:
+                        VStack{
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("econ1").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("econ2").resizable().frame(width: framewidth, height: frameheight)
+                            }
+                            NavigationLink(destination: FundingDetailView()) {
+                                Image("econ3").resizable().frame(width: framewidth, height: frameheight)
+                            }
                         }
-                    }
-                case 2:
-                    VStack{
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("water1").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("water2").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("water3").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                    }
-                case 3:
-                    VStack{
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("food1").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("food2").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("food3").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                    }
-                case 4:
-                    VStack{
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("right1").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("right2").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("right3").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                    }
-                case 5:
-                    VStack{
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("econ1").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("econ2").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                        NavigationLink(destination: FundingDetailView()) {
-                            Image("econ3").resizable().frame(width: framewidth, height: frameheight).toolbar(.hidden, for: .tabBar)
-                        }
-                    }
-                default:
-                    Text("NO FUNDS")
-                }//end of selectivemenu case
+                    default:
+                        Text("NO FUNDS")
+                    }//end of selectivemenu case
+                }//end of Group
+                
+                
+                .frame(width: framewidth)
             }
         }
     }
+}
 
 
 
@@ -241,7 +261,7 @@ struct ListView_Previews: PreviewProvider {
 //                        }
 //                        Spacer()
 //                        NavigationLink {
-//                            FundingDetailView().toolbar(.hidden, for: .tabBar)
+//                            FundingDetailView()
 //
 //
 //                        } label: {
@@ -260,5 +280,20 @@ struct ListView_Previews: PreviewProvider {
 //        }
 //    }
 //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

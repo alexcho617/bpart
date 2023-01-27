@@ -8,31 +8,37 @@
 import SwiftUI
 
 struct FundingDetailView: View {
+    
     var body: some View {
+        
         NavigationView{
             ScrollView{
-                Image("detail").resizable().frame(width: .infinity).aspectRatio( contentMode: .fill)
+                Image("detail")
+                    .resizable()
+                    .aspectRatio( contentMode: .fill)
                 
                 HStack{
                     VStack{
                         Image(systemName: "heart")
                         Text("19")
                     }
+                    
                     Button {
                         //
                     } label: {
-                        Rectangle().frame(width: 293, height: 51)
+                        Text("후원하기").font(.customtitle2)
+                            .foregroundColor(Color.white)
+                            .frame(width: 250, height: 51)
+                            .background(Color.blue)
                     }
                     .padding(24)
-
+                    
                 }
                 
-            }
-            
-            .navigationTitle(Text("상세페이지"))
+            }.navigationTitle("상세 페이지")
             
         }
-            
+        
     }
 }
 
