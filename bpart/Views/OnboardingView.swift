@@ -115,17 +115,20 @@ struct OnboardingView: View {
                 Spacer()
                 VStack{
                     Text("확인")
+                        
                         .frame(width: 350, height : 60)
                         .foregroundColor(areChecked() ? .white: .gray)
                         .font(.customtitle2)
-                        .cornerRadius(10)
                         .background(areChecked() ? Color(red: 62/255, green: 185/255, blue: 255/255) : Color.white)
+                        .cornerRadius(10)
+                        .border(areChecked() ? .white: .gray, width: 2)
+                        .cornerRadius(10)
                         .onTapGesture{
                             if(areChecked()){
                                 self.pageState = "InputNameView"
-                                }
+                            }
                         }
-                }
+                }.padding(20)
             }
         }
     }

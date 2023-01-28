@@ -37,10 +37,11 @@ struct NeedsView: View {
                         .frame(height:13)
                     Text("필요한 이야기를 나눕니다.").font(.customheading1)
                         .frame(height:13)
+                        .offset(y:5)
                     
                 }
                 
-                TextField("검색어를 임력해주세요", text: $searchString) // TODO : ADD Label
+                TextField("검색어를 입력해주세요", text: $searchString) // TODO : ADD Label
                     .frame(height: 50)
                     .background(Color(red: 252/255, green: 252/255, blue: 252/255))
                     .padding(EdgeInsets(top: 10, leading: 20, bottom: 20, trailing: 0))
@@ -132,7 +133,7 @@ struct MyButtonView: View{
             Text(self.tagname)
                 .font(.custombody4)
                 .foregroundColor(.teal)
-                .padding(EdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10))
+                .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)
                         .stroke(Color.teal, lineWidth: 1)

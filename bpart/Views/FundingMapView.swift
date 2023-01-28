@@ -52,32 +52,34 @@ struct FundingMapView: View {
         
         NavigationView{
             VStack{
-                ScrollView(.horizontal){HStack{
-                    ForEach(0..<6, id: \.self ){ idx in
-                        Button {
-                            //change selectednumber
-                            selectedIndex = idx
-                        } label: {
-                            
-                            ZStack {
-                                Text(buttonStrings[idx])
-                                    .padding(4)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 150)
-                                            .stroke(idx == selectedIndex ? .teal : Color.clear)
-                                    )
-                                    .font(.callout)
-                                    .foregroundColor(idx == selectedIndex ? .teal : .white)
+                ScrollView(.horizontal){
+                    HStack{
+                        ForEach(0..<6, id: \.self ){ idx in
+                            Button {
+                                //change selectednumber
+                                selectedIndex = idx
+                            } label: {
                                 
-                            }.background(idx == selectedIndex ? Color.clear : .teal)
-                                .opacity(0.8)
-                                .cornerRadius(10.0)
-                                .padding(6)
-                            
+                                ZStack {
+                                    Text(buttonStrings[idx])
+                                        .font(.custombody4)
+                                        .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 30)
+                                                .stroke(idx == selectedIndex ? Color.teal : Color.clear, lineWidth: 2)
+                                        ).padding(0)
+                                        .foregroundColor(idx == selectedIndex ? .teal : .white)
+                                    
+                                }.background(idx == selectedIndex ? Color.clear : .teal)
+                                    .opacity(0.8)
+                                    .cornerRadius(10.0)
+                                    .padding(6)
+                                
+                            }
                         }
+                        
                     }
-                    
-                }}
+                }
                 Map(coordinateRegion: $mapRegion, annotationItems: geo_dummy) {dummy in
                     MapAnnotation(coordinate: dummy.coordinate) {
                         Image(systemName: "circle.fill")
