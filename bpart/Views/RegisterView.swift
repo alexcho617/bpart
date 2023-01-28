@@ -31,6 +31,9 @@ struct RegisterView: View {
                 Text("SNS 계정으로 간편 가입하기")
                     .foregroundColor(.gray)
                     .font(.customtitle5)
+                    .onTapGesture{
+                        self.pageState = "OnboardingView"
+                    }
                 
                 
                 HStack(){
@@ -38,12 +41,18 @@ struct RegisterView: View {
                     Image("kakao_logo")
                         .resizable()
                         .frame(width: 60, height: 60)
+                        .onTapGesture{
+                            self.pageState = "OnboardingView"
+                        }
                     
                     Spacer()
                     
                     Image("naver_logo")
                         .resizable()
                         .frame(width: 60, height: 60)
+                        .onTapGesture{
+                            self.pageState = "OnboardingView"
+                        }
                     
                     Spacer()
                     

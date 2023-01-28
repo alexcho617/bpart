@@ -39,8 +39,10 @@ struct InputNameView : View{
                     .frame(width: 350, height : 60)
                     .foregroundColor(isNameValid() ? .white: .gray)
                     .font(.customtitle2)
-                    .cornerRadius(10)
                     .background(isNameValid() ? Color(red: 62/255, green: 185/255, blue: 255/255) : Color.white)
+                    .cornerRadius(10)
+                    .border(isNameValid() ? .white: .gray, width: 2)
+                    .cornerRadius(10)
                     .onTapGesture{
                         if(isNameValid()){
                             self.pageState = "OnboardingStartView"

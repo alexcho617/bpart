@@ -96,13 +96,14 @@ struct OnboardingStartView : View{
                 
                 VStack{
                     Text("시작하기")
-                }.cornerRadius(10)
-                .frame(width: 350, height : 60)
-                .foregroundColor(.white)
-                .font(.customtitle2)
-                .background(Color(red: 62/255, green: 185/255, blue: 255/255))
-                .onTapGesture{
-                    self.pageState = "HomeView"
+                        .frame(width: 350, height : 60)
+                        .background(Color(red: 62/255, green: 185/255, blue: 255/255))
+                        .cornerRadius(10)
+                        .foregroundColor(.white)
+                        .font(.customtitle2)
+                        .onTapGesture{
+                            self.pageState = "HomeView"
+                        }
                 }
                 
             }.padding(20)
