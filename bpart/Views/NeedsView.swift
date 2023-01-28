@@ -29,20 +29,21 @@ struct NeedsView: View {
             Spacer().frame(height: 1)
             VStack(alignment: .leading){
                 VStack(alignment: .leading) {
-                    Image("logo").resizable().frame(width: 60, height: 19.23).padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                    Image("logo").resizable().frame(width: 60, height: 19.23)
                     Spacer()
                         .frame(height:20.77)
-                    Text("따뜩한 관심이,").font(.customheading1)
+                    Text("따뜻한 관심이,").font(.customheading1)
                     Spacer()
                         .frame(height:13)
                     Text("필요한 이야기를 나눕니다.").font(.customheading1)
                         .frame(height:13)
-                }.padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 0))
+                    
+                }
                 
                 TextField("검색어를 임력해주세요", text: $searchString) // TODO : ADD Label
                     .frame(height: 50)
                     .background(Color(red: 252/255, green: 252/255, blue: 252/255))
-                    .padding(EdgeInsets(top: 30, leading: 20, bottom: 20, trailing: 0))
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 20, trailing: 0))
                 
                 HStack{
                     Spacer()
@@ -61,11 +62,11 @@ struct NeedsView: View {
                     MyButtonView(tagname:"불펼등")
                     MyButtonView(tagname:"정의")
                     Spacer()
-                }
+                }.padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 
                 
                 ScrollView {
-                    LazyVGrid(columns:columns) {
+                    LazyVGrid(columns:columns, alignment: .leading, spacing: 0) {
                         ForEach(self.needsDataList, id: \.self) { needsData in
                             VStack(alignment: .leading){
                                 VStack(alignment: .leading){
@@ -108,15 +109,18 @@ struct NeedsView: View {
                                     
                                 }.padding(20)
                                 
-                            }.background(Image(needsData.imageURL))
-                                .frame(width: 190, height: 190)
-                                .cornerRadius(30)
+                            }.background(Image(needsData.imageURL)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit))
+                                .cornerRadius(10)
                             
-                        }
-                    }
+                        }.frame(width: 180, height: 180)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                    }.padding(0)
                 }
             }
         }
+        .padding(EdgeInsets(top: 12, leading: 15, bottom: 0, trailing: 15))
     }
 }
 
@@ -128,7 +132,7 @@ struct MyButtonView: View{
             Text(self.tagname)
                 .font(.custombody4)
                 .foregroundColor(.teal)
-                .padding(EdgeInsets(top: 2, leading: 16, bottom: 2, trailing: 16))
+                .padding(EdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10))
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)
                         .stroke(Color.teal, lineWidth: 1)

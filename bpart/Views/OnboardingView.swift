@@ -34,7 +34,6 @@ struct OnboardingView: View {
                 Button(action: {
                     pageState = "RegisterView"
                 }, label: {
-                    
                     Image(systemName: "chevron.backward")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -42,40 +41,52 @@ struct OnboardingView: View {
                         .padding(20)
                 })
                 Text("서비스 이용 동의")
-                    .font(.customheading1)
+                    .font(.customheading0)
                     .padding(EdgeInsets(top: 30, leading: 35, bottom: 20, trailing: 0))
-                HStack{
-                    Button(action: {
-                        allConsentListselected = !allConsentListselected
-                        
-                        if(allConsentListselected){
+                
+                VStack(alignment: .leading){
+                    HStack{
+                        Button(action: {
+                            allConsentListselected = !allConsentListselected
                             
-                            for idx in 0...3 {
-                                consentListSelected[idx] = true
+                            if(allConsentListselected){
+                                for idx in 0...3 {
+                                    consentListSelected[idx] = true
+                                }
+                            }
+    
+                        }, label: {
+                            allConsentListselected ?
+                            Image(systemName: "circle.fill")
+                                .resizable()
+                                .frame(width: 20, height: 20) :
+                            Image(systemName: "circle")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        })
+                        Text(allConsent)
+                            .font(.customheading1)
+                        
+                    }.padding(EdgeInsets(top: 30, leading: 15, bottom: 20, trailing: 0))
+                        .onTapGesture {
+                            allConsentListselected = !allConsentListselected
+                            
+                            if(allConsentListselected){
+                                for idx in 0...3 {
+                                    consentListSelected[idx] = true
+                                }
                             }
                         }
-                    }, label: {
-                        allConsentListselected ?
-                        Image(systemName: "circle.fill")
-                            .resizable()
-                            .frame(width: 20, height: 20) :
-                        Image(systemName: "circle")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                    })
                     
-                    Text(allConsent)
-                        .font(.customheading1)
+                    // line
+                    HStack{
+                        Spacer()
+                        Rectangle()
+                            .fill(Color.gray)
+                            .frame(width: 300, height: 3)
+                        Spacer()
+                    }
                     
-                }.padding(EdgeInsets(top: 30, leading: 15, bottom: 20, trailing: 0))
-                
-                // line
-                Rectangle()
-                    .fill(Color.gray)
-                    .frame(width: 300, height: 3)
-                    .offset(x: 50)
-                
-                VStack{
                     VStack{
                         ForEach(0..<consentListSelected.count){ idx in
                             HStack{
@@ -94,65 +105,36 @@ struct OnboardingView: View {
                                 Text(consentList[idx])
                                 Spacer()
                                 Image(systemName: "chevron.forward")
+                            }.onTapGesture {
+                                consentListSelected[idx] = !consentListSelected[idx]
                             }
                             .padding(15)
                         }
                     }
-                    Spacer()
-                    VStack{
-                        Text("확인")
-                            .frame(width: 350, height : 60)
-                            .foregroundColor(areChecked() ? .white: .gray)
-                            .font(.customtitle2)
-                            .cornerRadius(10)
-                            .background(areChecked() ? Color(red: 62/255, green: 185/255, blue: 255/255) : Color.white)
-                            .onTapGesture{
-                                if(areChecked()){
-                                    self.pageState = "InputNameView"
+                }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                Spacer()
+                VStack{
+                    Text("확인")
+                        .frame(width: 350, height : 60)
+                        .foregroundColor(areChecked() ? .white: .gray)
+                        .font(.customtitle2)
+                        .cornerRadius(10)
+                        .background(areChecked() ? Color(red: 62/255, green: 185/255, blue: 255/255) : Color.white)
+                        .onTapGesture{
+                            if(areChecked()){
+                                self.pageState = "InputNameView"
                                 }
-                            }
-//                        : Text("확인")
-//                            .frame(width: 350, height : 60)
-//                            .foregroundColor(.gray)
-//                            .font(.customtitle2)
-//                            .background(Color.white)
-//                            .border(.gray)
-//                            .cornerRadius(10);
-                    }.padding(20)
+                        }
                 }
             }
         }
     }
-    
+
+
     func areChecked() -> Bool {
         return (consentListSelected[1] && consentListSelected[2])
     }
-    //    func ConfirmButton() -> View {
-    //        if(consentListSelected[1] && consentListSelected[2]) {
-    //            return NavigationLink (
-    //                destination: InputName()
-    //                , label : {
-    //                    Text("확인")
-    //                        .frame(width: 350, height : 60)
-    //                        .foregroundColor(.white)
-    //                        .font(.customtitle2)
-    //                        .cornerRadius(10)
-    //                        .background(Color(red: 62/255, green: 185/255, blue: 255/255))
-    //                    }
-    //                )
-    //            } else {
-    //                return Text("확인")
-    //                    .frame(width: 350, height : 60)
-    //                    .foregroundColor(.gray)
-    //                    .font(.customtitle2)
-    //                    .background(Color.white)
-    //                    .border(.gray)
-    //                    .cornerRadius(10);
-    //            }
-    //        }
-    //    }
 }
-
 
 
 struct OnboardingView_Previews: PreviewProvider {
