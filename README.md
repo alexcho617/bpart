@@ -11,6 +11,5 @@
 
 ### 1st Hackathon @ Handong Global University: NORITHON
 
-[프로젝트 깃헙링크](https://github.com/NORITHON/bpart)
 
 Made by 김에녹 박예지 박정은 조성진 채정영 with ❤️
